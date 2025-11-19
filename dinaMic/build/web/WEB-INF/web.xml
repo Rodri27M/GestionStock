@@ -5,7 +5,7 @@
                              https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
     
-    <display-name>dinaMic</display-name>
+    <display-name>dinalVic</display-name>
     
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
@@ -15,6 +15,7 @@
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>modelo.CharacterEncodingFilter</filter-class>
     </filter>
+    
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -23,13 +24,5 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-    
-    <!-- AÑADIR CONFIGURACIÓN JSTL -->
-    <jsp-config>
-        <taglib>
-            <taglib-uri>https://jakarta.ee/tags/jstl/core</taglib-uri>
-            <taglib-location>/WEB-INF/lib/jstl-1.2.jar</taglib-location>
-        </taglib>
-    </jsp-config>
     
 </web-app>

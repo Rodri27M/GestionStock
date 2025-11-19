@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import modelo.Actividad;
 import modelo.Usuario;
 
 @WebServlet("/DashboardServlet")
@@ -28,12 +30,16 @@ public class DashboardServlet extends HttpServlet {
         
         // Obtener datos del usuario de la sesión
         Usuario usuario = (Usuario) session.getAttribute("usuario");
+        List<Actividad> actividades = (List<Actividad>) session.getAttribute("actividades");
         
         // Pasar datos a la vista
         request.setAttribute("usuario", usuario);
-        request.setAttribute("esAdmin", usuario.getId_perfil() == 1); // Asumiendo que 1 = Admin
+        request.setAttribute("actividades", actividades);
+        request.setAttribute("esAdmin", usuario.getId_perfil() == 1); // 1 = Admin
         
-        // Cargar datos del dashboard (aquí irán luego los contadores de productos, ventas, etc.)
+        // DEBUG en consola
+        System.out.println("Dashboard - Usuario: " + usuario.getNombreCompleto());
+        System.out.println("Dashboard - Actividades: " + (actividades != null ? actividades.size() : 0));
         
         request.getRequestDispatcher("dashboard.jsp").forward(request, response);
     }

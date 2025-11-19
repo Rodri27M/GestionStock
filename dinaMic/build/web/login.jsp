@@ -137,7 +137,7 @@
 </c:if>
 
 <%-- Y agregar este estilo en el CSS --%>
-<style>
+   <style>
     .success-message {
         background: #e8f5e8;
         color: #2e7d32;

@@ -1,6 +1,8 @@
 
 package modelo;
 
+import java.util.List;
+
 
 public class Usuario {
     private int idusu;
@@ -12,6 +14,7 @@ public class Usuario {
     private String clave;
     private int id_perfil;
     private String nombrePerfil; // Para mostrar en vistas
+    private List<Actividad> actividades;
     
     // Constructores
     public Usuario() {}
@@ -53,7 +56,15 @@ public class Usuario {
     
     public String getNombrePerfil() { return nombrePerfil; }
     public void setNombrePerfil(String nombrePerfil) { this.nombrePerfil = nombrePerfil; }
+    public List<Actividad> getActividades() { return actividades; }
+    public void setActividades(List<Actividad> actividades) { this.actividades = actividades; }
     
+    // Método útil para verificar si tiene una actividad
+    public boolean tieneActividad(String enlace) {
+        if (actividades == null) return false;
+        return actividades.stream()
+                .anyMatch(a -> enlace.equals(a.getEnlace()));
+    }
     // Método útil para vistas
     public String getNombreCompleto() {
         return nombre + " " + apellido;
