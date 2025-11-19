@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import modelo.PerfilDAO;
+import controladorDAO.PerfilDAO;
 import modelo.Usuario;
 import modelo.Perfil;
 import java.io.IOException;

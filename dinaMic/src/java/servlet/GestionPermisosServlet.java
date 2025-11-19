@@ -16,8 +16,8 @@ import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Actividad;
-import modelo.ActividadDAO;
-import modelo.GesActividadDAO;
+import controladorDAO.ActividadDAO;
+import controladorDAO.GesActividadDAO;
 import modelo.Usuario;
 
 @WebServlet("/GestionPermisosServlet")

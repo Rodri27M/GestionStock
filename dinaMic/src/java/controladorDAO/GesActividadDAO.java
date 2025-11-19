@@ -1,5 +1,5 @@
 // modelo/dao/GesActividadDAO.java
-package modelo;
+package controladorDAO;
 
 import modelo.Conexion;
 import modelo.Actividad;
@@ -8,6 +8,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import modelo.Actividad;
+import modelo.Conexion;
+import modelo.Usuario;
 
 public class GesActividadDAO {
     

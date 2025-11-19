@@ -15,43 +15,7 @@ public class UsuarioDAO implements CRUD<Usuario> {
     public UsuarioDAO() {
     
     }
-    
-//    // Método de autenticación
-//    public Usuario autenticar(String usuario, String clave) {
-//        Usuario user = null;
-//        String sql = "SELECT u.*, p.perfil FROM usuarios u " +
-//                    "INNER JOIN perfiles p ON u.id_perfil = p.id_perfil " +
-//                    "WHERE u.usuario = ? AND u.clave = ?";
-//        
-//        try {
-//            Conexion connection = new Conexion();
-//            PreparedStatement ps = connection.getConnection().prepareStatement(sql);
-//            ps.setString(1, usuario);
-//            ps.setString(2, clave);
-//            
-//            ResultSet rs = ps.executeQuery();
-//            
-//            if (rs.next()) {
-//                user = new Usuario();
-//                user.setIdusu(rs.getInt("idusu"));
-//                user.setNum_docu(rs.getString("num_docu"));
-//                user.setNombre(rs.getString("nombre"));
-//                user.setApellido(rs.getString("apellido"));
-//                user.setEmail(rs.getString("email"));
-//                user.setUsuario(rs.getString("usuario"));
-//                user.setId_perfil(rs.getInt("id_perfil"));
-//                user.setNombrePerfil(rs.getString("perfil"));
-//            }
-//            
-//        } catch (SQLException e) {
-//            System.err.println("Error en autenticación: " + e.getMessage());
-//        } finally {
-//    
-//        }
-//        
-//        return user;
-//    }
-    
+   
     // Implementación de métodos CRUD
     @Override
     public List<Usuario> listar() {
@@ -348,5 +312,24 @@ public class UsuarioDAO implements CRUD<Usuario> {
         return false;
     }
     
-    // ... (los demás métodos CRUD se mantienen igual)
+  public int contarUsuarios() {
+   
+    int total = 0;
+    String sql = "SELECT COUNT(*) as total FROM usuarios";
+    
+    try {
+        Conexion connection = new Conexion();
+        PreparedStatement ps = connection.getConnection().prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            total = rs.getInt("total");
+        }
+        
+    } catch (SQLException e) {
+       JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    }
+    
+    return total;
+}
 }

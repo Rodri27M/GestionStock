@@ -291,7 +291,7 @@
 
                 <div class="card">
                     <div class="card-icon">👥</div>
-                    <div class="card-number">0</div>
+                    <div class="card-number">${totalUsuarios}</div>
                     <div class="card-label">Usuarios Activos</div>
                 </div>
             </div>

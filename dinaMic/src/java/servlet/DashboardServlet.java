@@ -1,6 +1,6 @@
-
 package servlet;
 
+import controladorDAO.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,32 +15,38 @@ import modelo.Usuario;
 
 @WebServlet("/DashboardServlet")
 public class DashboardServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession(false);
-        
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        int totalUsuarios = usuarioDAO.contarUsuarios();
+        request.setAttribute("totalUsuarios", totalUsuarios);
+
         // Verificar si hay sesión activa
         if (session == null || session.getAttribute("usuario") == null) {
             response.sendRedirect("login.jsp");
             return;
         }
-        
+
         // Obtener datos del usuario de la sesión
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         List<Actividad> actividades = (List<Actividad>) session.getAttribute("actividades");
-        
+
         // Pasar datos a la vista
         request.setAttribute("usuario", usuario);
         request.setAttribute("actividades", actividades);
         request.setAttribute("esAdmin", usuario.getId_perfil() == 1); // 1 = Admin
-        
+
         // DEBUG en consola
         System.out.println("Dashboard - Usuario: " + usuario.getNombreCompleto());
         System.out.println("Dashboard - Actividades: " + (actividades != null ? actividades.size() : 0));
-        
+
         request.getRequestDispatcher("dashboard.jsp").forward(request, response);
-    }
+
+        // Obtener estadísticas
+            }
 }

@@ -2,13 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package modelo;
+package controladorDAO;
 
 import modelo.Conexion;
 import modelo.Actividad;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Actividad;
+import modelo.CRUD;
+import modelo.Conexion;
 
 public class ActividadDAO implements CRUD<Actividad> {
     
