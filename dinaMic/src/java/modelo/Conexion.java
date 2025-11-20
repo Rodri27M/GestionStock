@@ -10,7 +10,7 @@ public class Conexion {
    private static Connection conexion = null;
    private final String url = "jdbc:postgresql://localhost:5432/inventario";
    private final String usuario = "postgres";
-   private final String contraseña = "2003rodri"; 
+   private final String contraseña = "1234"; 
    
    public Connection getConnection() {
        //Declara una variable conexion de tipo Connection que almacenará la conexión con la base de datos.
